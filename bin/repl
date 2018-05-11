@@ -1,0 +1,11 @@
+#!/bin/sh
+
+if [ ! "$(command -v "$1")" ] ; then
+  echo "$1 not found" && exit 1
+fi
+
+while true ; do
+  printf "${REPL_PROMPT:="$1:"} "
+  IFS= read -r input
+  eval "$@ ${input:=$REPL_DEFAULT}"
+done

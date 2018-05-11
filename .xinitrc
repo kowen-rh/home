@@ -1,0 +1,24 @@
+# disable system bell and X screensaver
+# note: blank the screen with `xset s activate`
+xset b off
+xset s off
+
+# turn on numlock
+numlockx
+
+# start the hotkey daemon and disable touchpad while typing
+sxhkd &
+syndaemon -i 1 &
+
+# set the wallpaper and start the compositor
+hsetroot -fill ~/pic/wallpaper
+compton -b
+
+# set the status for dwm
+while true ; do
+  xsetroot -name "$(~/bin/dwm-status)"
+  sleep 1s
+done &
+
+# replace this process with dwm
+exec /usr/local/bin/dwm

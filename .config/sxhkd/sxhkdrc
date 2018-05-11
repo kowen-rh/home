@@ -1,0 +1,8 @@
+XF86Audio{Mute,RaiseVolume,LowerVolume}
+  amixer set Master {toggle,5%+,5%-}
+
+alt + shift + {l,w}
+  {slock,chromium}
+
+super + k
+  xdotool getactivewindow windowkill
