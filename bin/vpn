@@ -5,6 +5,6 @@ case "$1" in
   d|down) nmcli connection down "$VPN_CONNECTION" ;;
   s|status)
     state="$(nmcli -g GENERAL.STATE c s "$VPN_CONNECTION")"
-    ([ $state = "activated" ] && echo up) || echo down ;;
+    ([ "$state" = "activated" ] && echo up) || echo down ;;
   *) echo 'usage: vpn up|down|status' 1>&2 && exit 1 ;;
 esac
