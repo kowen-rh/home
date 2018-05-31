@@ -1,6 +1,6 @@
 #!/bin/sh
 
 battery="$(acpi | awk '/^Battery 0:/ { print $4 }' | sed s/,//)"
-time="$(date +"%H:%M")"
+time="$(date +"%F | %R")"
 
 echo "$battery | $time"
