@@ -28,3 +28,5 @@ set directory=~/.vim/swap//
 set undodir=~/.vim/undo//
 
 nnoremap K i<CR><Esc>
+
+autocmd FileType make set noexpandtab
