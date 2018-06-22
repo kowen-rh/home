@@ -4,5 +4,8 @@ XF86Audio{Mute,RaiseVolume,LowerVolume}
 alt + shift + {l,w}
   {slock,chromium}
 
+alt + a
+  $HOME/bin/dmenu_fm
+
 super + k
   xdotool getactivewindow windowkill
