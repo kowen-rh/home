@@ -1,3 +1,5 @@
+require 'sr/input/readline'
+
 %w(. lib).map! { |path| File.expand_path(path) }.each do |path|
   $LOAD_PATH.unshift(path) unless $LOAD_PATH.include?(path)
 end
