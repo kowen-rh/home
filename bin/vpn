@@ -1,10 +1,12 @@
 #!/bin/sh
 
+conn=${VPN_CONNECTION:="$(cat ~/.config/vpn 2>/dev/null)"}
+
 case "$1" in
-  u|up)   nmcli connection up "$VPN_CONNECTION" --ask ;;
-  d|down) nmcli connection down "$VPN_CONNECTION" ;;
+  u|up)   nmcli connection up "$conn" --ask ;;
+  d|down) nmcli connection down "$conn" ;;
   s|status)
-    state="$(nmcli -g GENERAL.STATE c s "$VPN_CONNECTION")"
+    state="$(nmcli -g GENERAL.STATE c s "$conn")"
     ([ "$state" = "activated" ] && echo up) || echo down ;;
   *) echo 'usage: vpn up|down|status' 1>&2 && exit 1 ;;
 esac
