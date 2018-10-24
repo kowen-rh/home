@@ -1,0 +1,4 @@
+#!/bin/zsh
+
+# zsh: `=()` encapsulates the output as a temporary file.
+zathura =(man -T pdf "$@")
