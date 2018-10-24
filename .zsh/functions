@@ -16,3 +16,7 @@ if [[ -x "$(command -v git)" ]] ; then
     fi
   }
 fi
+
+function szh() {
+  grep "$1" ~/.zsh_history
+}

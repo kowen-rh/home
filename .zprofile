@@ -6,6 +6,7 @@ export PAGER=less
 export MANPAGER=less
 export EDITOR=vim
 export VISUAL=vim
+export BROWSER=chromium
 
 if [[ -x $(command -v go) ]] ; then
   export GOPATH=~/src/go
@@ -31,6 +32,10 @@ if [[ -f "${SSH_ENV}" ]] ; then
   }
 else
   start_agent
+fi
+
+if [[ -z $DISPLAY && $(tty) == /dev/tty1 ]] ; then
+  exec startx
 fi
 
 if [[ -z $DISPLAY && -n "$(pidof X)" && $TERM == 'screen' ]] ; then
