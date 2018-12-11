@@ -15,6 +15,7 @@ if [[ -x $(command -v go) ]] ; then
 fi
 
 path[1,0]=~/bin
+path[1,0]=~/.manyshift/bin
 
 SSH_ENV="$HOME/.ssh/env"
 

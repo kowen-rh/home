@@ -1,5 +1,9 @@
 #!/bin/zsh
 
+PS1='
+%n@%m: %~
+%# '
+
 setopt extended_glob
 
 autoload -U colors && colors
