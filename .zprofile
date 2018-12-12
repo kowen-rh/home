@@ -6,7 +6,7 @@ export PAGER=less
 export MANPAGER=less
 export EDITOR=vim
 export VISUAL=vim
-export BROWSER=chromium
+export BROWSER=firefox
 
 if [[ -x $(command -v go) ]] ; then
   export GOPATH=~/src/go
