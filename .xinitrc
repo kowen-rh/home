@@ -12,7 +12,7 @@ syndaemon -i 1 &
 synclient TapButton1=1 TapButton2=3 TapButton3=2
 
 # set the wallpaper and start the compositor
-hsetroot -fill ~/pic/wallpaper
+hsetroot -fill ~/pic/wallpaper.jpg
 compton -b
 
 # set the status for dwm
@@ -20,9 +20,6 @@ while true ; do
   xsetroot -name "$(~/bin/dwm-status)"
   sleep 1s
 done &
-
-# start the main tmux session
-(sleep 1s && st tmux new -s main) &
 
 # replace this process with dwm
 exec /usr/local/bin/dwm
