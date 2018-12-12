@@ -1,6 +1,5 @@
 [user]
 	email = robin.owen@redhat.com
 	name = Robin Owen
-	signingkey = 17E5CB13D94795DD
 [core]
 	excludesfile = ~/.cvsignore
