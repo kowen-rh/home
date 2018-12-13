@@ -1,6 +1,6 @@
 #!/bin/zsh
 
-typeset -U path
+typeset -aU path
 
 export PAGER=less
 export MANPAGER=less
@@ -9,16 +9,21 @@ export VISUAL=vim
 export BROWSER=firefox
 
 if [[ -x $(command -v go) ]] ; then
-  export GOPATH=~/src/go
+  export GOPATH=$HOME/src/go
   path[1,0]=$GOPATH/bin
   [[ ! -d $GOPATH/bin ]] && mkdir -p $GOPATH/bin
 fi
 
-path[1,0]=~/bin
-
 if [[ -d "$HOME/.manyshift/bin" ]] ; then
-  path[1,0]=~/.manyshift/bin
+  path[1,0]=$HOME/.manyshift/bin
 fi
+
+if [[ -d "$HOME/.rbenv" ]] ; then
+  path[1,0]=$HOME/.rbenv/bin
+  eval "$(rbenv init -)"
+fi
+
+path[1,0]=~/bin
 
 SSH_ENV="$HOME/.ssh/env"
 
@@ -31,9 +36,7 @@ function start_agent() {
 
 if [[ -f "${SSH_ENV}" ]] ; then
   source "${SSH_ENV}" > /dev/null
-  ps -ef | grep ${SSH_AGENT_PID} | grep ssh-agent$ > /dev/null || {
-    start_agent
-  }
+  pgrep 'ssh-agent$' > /dev/null || start_agent
 else
   start_agent
 fi
