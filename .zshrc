@@ -4,7 +4,8 @@ setopt extended_glob
 
 autoload -U colors && colors
 
-PS1="%{$fg[magenta]%}%m: %{$fg[yellow]%}%~
+PS1="
+%{$fg[magenta]%}%m: %{$fg[yellow]%}%~
 %{$fg[green]%}%# %{$reset_color%}"
 
 setopt append_history hist_ignore_dups hist_ignore_all_dups
