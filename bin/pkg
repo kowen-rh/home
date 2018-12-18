@@ -1,0 +1,133 @@
+#!/bin/sh
+
+print_usage() {
+  echo "$(basename "$0") [command] [args...]"
+  echo "
+Selected package manager:
+  $PKG_MGR
+Known package managers:
+  apt, dnf, pacman, xbps, yum
+
+Commands:
+  install (i), reinstall (r), remove (x), autoremove (a), search (s),
+  info (n), provides (p), upgrade (u), depends (d), requires (q)"
+}
+
+setup() {
+  if [ -z "$PKG_MGR" ] ; then
+    if [ -e /etc/os-release ] ; then
+      distro="$(awk -F'=' '/^ID=/ { print $2 }' /etc/os-release | tr -d '"')"
+    fi
+
+    case "$distro" in
+      arch)
+        PKG_MGR='pacman' ;;
+      fedora)
+        PKG_MGR='dnf' ;;
+      centos|rhel)
+        PKG_MGR='yum' ;;
+      linuxmint|ubuntu|debian)
+        PKG_MGR='apt' ;;
+      void)
+        PKG_MGR='xbps' ;;
+      *)
+        echo "$(basename $0): Unknown Linux distribution." 1>&2
+        echo "$(basename $0): Use PKG_MGR to select a package manager." 1>&2
+        exit 2 ;;
+    esac
+  fi
+
+  case "$PKG_MGR" in
+    apt)
+      PKG_CMD_INSTALL='apt install'
+      PKG_CMD_REINSTALL='apt reinstall'
+      PKG_CMD_REMOVE='apt remove'
+      PKG_CMD_AUTOREMOVE='apt autoremove'
+      PKG_CMD_SEARCH='apt search'
+      PKG_CMD_INFO='apt-file show -F'
+      PKG_CMD_PROVIDES='apt-file search -F'
+      PKG_CMD_UPGRADE='apt upgrade'
+      PKG_CMD_DEPENDS='apt-cache depends'
+      PKG_CMD_REQUIRES='apt-cache rdepends'
+      ;;
+    dnf|yum)
+      (command -v dnf > /dev/null && cmd='dnf') || cmd='yum'
+
+      PKG_CMD_INSTALL="$cmd install"
+      PKG_CMD_REINSTALL="$cmd reinstall"
+      PKG_CMD_REMOVE="$cmd remove"
+      PKG_CMD_AUTOREMOVE="$cmd autoremove"
+      PKG_CMD_SEARCH="$cmd search"
+      PKG_CMD_INFO="$cmd info"
+      PKG_CMD_PROVIDES="$cmd provides"
+      PKG_CMD_UPGRADE="$cmd upgrade"
+      PKG_CMD_DEPENDS="$cmd deplist"
+      PKG_CMD_REQUIRES="repoquery --requires"
+      ;;
+    pacman)
+      PKG_CMD_INSTALL='pacman -S'
+      PKG_CMD_REINSTALL='pacman -S'
+      PKG_CMD_REMOVE='pacman -Rs'
+      PKG_CMD_AUTOREMOVE='pacman -Rns $(pacman -Qtdq)'
+      PKG_CMD_SEARCH='pacman -Ss'
+      PKG_CMD_INFO='pacman -Si'
+      PKG_CMD_PROVIDES='pkgfile -s'
+      PKG_CMD_UPGRADE='pacman -Syu'
+      PKG_CMD_DEPENDS='pacman -Si'
+      PKG_CMD_REQUIRES='pacman -Sii'
+      ;;
+    xbps)
+      PKG_CMD_INSTALL='xbps-install -S'
+      PKG_CMD_REINSTALL='xbps-install -f'
+      PKG_CMD_REMOVE='xbps-remove'
+      PKG_CMD_AUTOREMOVE='xbps-remove -o'
+      PKG_CMD_SEARCH='xbps-query -Rs'
+      PKG_CMD_INFO='xbps-query -RS'
+      PKG_CMD_PROVIDES='xbps-query -o'
+      PKG_CMD_UPGRADE='xbps-install -Su'
+      PKG_CMD_DEPENDS='xbps-query -x'
+      PKG_CMD_REQUIRES='xbps-query -X'
+      ;;
+    *)
+      echo "$(basename $0): Unknown package manager: '$PKG_MGR'" 1>&2
+      exit 3 ;;
+  esac
+}
+
+pkg_eval_cmd() {
+  ([ -n "$PKG_SIMULATE" ] && echo "$@" ) || eval "$@"
+}
+
+main() {
+  setup
+
+  case "$1" in
+    i|install)
+      shift && pkg_eval_cmd "$PKG_CMD_INSTALL $@" ;;
+    r|reinstall)
+      shift && pkg_eval_cmd "$PKG_CMD_REINSTALL $@" ;;
+    x|remove)
+      shift && pkg_eval_cmd "$PKG_CMD_REMOVE $@" ;;
+    a|autoremove)
+      shift && pkg_eval_cmd "$PKG_CMD_AUTOREMOVE $@" ;;
+    s|search)
+      shift && pkg_eval_cmd "$PKG_CMD_SEARCH $@" ;;
+    n|info)
+      shift && pkg_eval_cmd "$PKG_CMD_INFO $@" ;;
+    p|provides)
+      shift && pkg_eval_cmd "$PKG_CMD_PROVIDES $@" ;;
+    u|upgrade)
+      shift && pkg_eval_cmd "$PKG_CMD_UPGRADE $@" ;;
+    d|depends)
+      shift && pkg_eval_cmd "$PKG_CMD_DEPENDS $@" ;;
+    q|requires)
+      shift && pkg_eval_cmd "$PKG_CMD_REQUIRES $@" ;;
+    -h|--help|help)
+      print_usage ;;
+    *)
+      print_usage 1>&2
+      exit 1 ;;
+  esac
+}
+
+main "$@"

@@ -4,10 +4,6 @@ alias ls='ls --color=auto'
 alias s='sudo su -'
 alias vi='vim'
 
-alias xi='sudo xbps-install -S'
-alias xrs='xbps-query -Rs'
-alias xrf='xbps-query -Rf'
-
 if [[ -x "$(command -v tmux)" ]] ; then
   alias t='TMUX= tmux'
   alias ta='TMUX= tmux attach -t'
