@@ -2,11 +2,15 @@
 
 typeset -aU path
 
-export PAGER=less
-export MANPAGER=less
-export EDITOR=vim
-export VISUAL=vim
-export BROWSER=firefox
+PAGER=less
+MANPAGER=less
+EDITOR=vim
+VISUAL=vim
+XTERMINAL=st
+XLOCKER=slock
+XBROWSER=firefox
+
+export PAGER MANPAGER EDITOR VISUAL XTERMINAL XLOCKER XBROWSER
 
 if [[ -x $(command -v go) ]] ; then
   export GOPATH=$HOME/src/go

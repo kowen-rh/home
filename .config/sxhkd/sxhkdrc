@@ -1,8 +1,14 @@
 XF86Audio{Mute,RaiseVolume,LowerVolume}
   amixer set Master {toggle,5%+,5%-}
 
+alt + shift + Return
+  $XTERMINAL
+
 alt + shift + {l,w}
-  {slock,$BROWSER}
+  {$XLOCKER,$XBROWSER}
+
+alt + p
+  dmenu_run
 
 super + k
   xdotool getactivewindow windowkill
