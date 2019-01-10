@@ -1,5 +1,8 @@
 [user]
-	email = robin.owen@redhat.com
-	name = Robin Owen
+  email = robin.owen@redhat.com
+  name = Robin Owen
 [core]
-	excludesfile = ~/.cvsignore
+  editor = ${VISUAL} +'set colorcolumn 72'
+  excludesfile = ~/.gitignore.global
+[include]
+  path = ~/.gitconfig.aliases

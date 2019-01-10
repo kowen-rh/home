@@ -1,0 +1,16 @@
+[alias]
+  a = add
+  br = branch
+  co = checkout
+  cb = checkout -b
+  ci = commit
+  cm = commit -m
+  ca = commit -am
+  df = diff
+  dfc = diff --cached
+  l = log
+  r = remote
+  s = status -s
+  st = status
+  unstage = reset HEAD --
+  un = unstage
