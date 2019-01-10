@@ -2,7 +2,7 @@
   email = robin.owen@redhat.com
   name = Robin Owen
 [core]
-  editor = ${VISUAL} +'set colorcolumn 72'
+  editor = ${VISUAL} +'set cc=72'
   excludesfile = ~/.gitignore.global
 [include]
   path = ~/.gitconfig.aliases
