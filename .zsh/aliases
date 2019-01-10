@@ -1,5 +1,6 @@
 #!/bin/zsh
 
+alias ..='cd ..'
 alias ls='ls --color=auto'
 alias s='sudo su -'
 alias vi='vim'
