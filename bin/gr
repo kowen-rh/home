@@ -1,0 +1,3 @@
+#!/bin/sh
+
+REPL_DEFAULT='status -s' exec repl git
