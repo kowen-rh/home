@@ -15,6 +15,8 @@ synclient TapButton1=1 TapButton2=3 TapButton3=2
 hsetroot -fill ~/pic/wallpaper.jpg
 compton -b
 
+pulseaudio --start
+
 # set the status for dwm
 while true ; do
   xsetroot -name "$(~/bin/dwm-status)"
