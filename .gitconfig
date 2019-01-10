@@ -4,5 +4,12 @@
 [core]
   editor = ${VISUAL} +'set cc=72'
   excludesfile = ~/.gitignore.global
+
+[url "git@github.com:"]
+  insteadOf = gh:
+[url "git://git.suckless.org/"]
+  insteadOf = sl:
+
 [include]
   path = ~/.gitconfig.aliases
+  path = ~/.gitconfig.local
