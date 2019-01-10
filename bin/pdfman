@@ -1,4 +1,3 @@
-#!/bin/zsh
+#!/bin/sh
 
-# zsh: `=()` encapsulates the output as a temporary file.
-zathura =(man -T pdf "$@")
+MANPAGER=zathura man -T pdf "$@"
