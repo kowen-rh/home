@@ -9,6 +9,7 @@ set laststatus=0
 set nrformats-=octal
 set number
 set ruler
+set cc=80
 set scrolloff=1
 set sessionoptions-=options
 set shiftwidth=2
