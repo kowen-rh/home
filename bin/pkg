@@ -51,7 +51,11 @@ setup() {
       PKG_CMD_REQUIRES='apt-cache rdepends'
       ;;
     dnf|yum)
-      (command -v dnf > /dev/null && cmd='dnf') || cmd='yum'
+      if [ -x "$(command -v dnf)" ] ; then
+        cmd='dnf'
+      else
+        cmd='yum'
+      fi
 
       PKG_CMD_INSTALL="$cmd install"
       PKG_CMD_REINSTALL="$cmd reinstall"
