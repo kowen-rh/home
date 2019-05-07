@@ -1,6 +1,6 @@
 [user]
-  email = robin.owen@redhat.com
-  name = Robin Owen
+  email = kowen@redhat.com
+  name = Kevin Owen
 [core]
   editor = ${VISUAL} +'set cc=72'
   excludesfile = ~/.gitignore.global
