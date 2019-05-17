@@ -1,3 +1,5 @@
+#!/bin/sh
+
 # disable system bell and X screensaver
 # note: blank the screen with `xset s activate`
 xset b off
@@ -12,16 +14,16 @@ syndaemon -i 1 &
 synclient TapButton1=1 TapButton2=3 TapButton3=2
 
 # set the wallpaper and start the compositor
-hsetroot -fill ~/pic/wallpaper.jpg
+$HOME/.fehbg &
 compton -b
 
 pulseaudio --start
 
 # set the status for dwm
 while true ; do
-  xsetroot -name "$(~/bin/dwm-status)"
+  xsetroot -name "$($HOME/bin/dwm-status)"
   sleep 1s
 done &
 
 # replace this process with dwm
-exec /usr/local/bin/dwm
+exec /usr/bin/dwm-start
