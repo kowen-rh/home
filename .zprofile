@@ -6,7 +6,7 @@ PAGER=less
 MANPAGER=less
 EDITOR=vim
 VISUAL=vim
-XTERMINAL=st
+XTERMINAL=gnome-terminal
 XLOCKER=slock
 XBROWSER=firefox
 
