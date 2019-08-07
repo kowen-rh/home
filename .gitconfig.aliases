@@ -8,9 +8,17 @@
   ca = commit -am
   df = diff
   dfc = diff --cached
+  dt = difftool
   l = log
+  mt = mergetool
   r = remote
   s = status -s
   st = status
+
   unstage = reset HEAD --
   un = unstage
+
+  update = !git pull --rebase upstream master
+  up = update
+
+  meld = !git mergetool -t meld
