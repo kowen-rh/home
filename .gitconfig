@@ -4,11 +4,11 @@
 [core]
   editor = ${VISUAL} +'set cc=72'
   excludesfile = ~/.gitignore.global
+  autocrlf = input
+  whitespace = -trailing-space
 
 [url "git@github.com:"]
   insteadOf = gh:
-[url "git://git.suckless.org/"]
-  insteadOf = sl:
 
 [diff]
   tool = meld
