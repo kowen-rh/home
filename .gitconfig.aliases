@@ -18,9 +18,9 @@
   s = status --short
   st = status
 
-  review = "!git log @{push}.."
+  review = log @{push}..
   rv = review
-  rvdf = "!git diff @{push}.."
+  rvdf = diff @{push}..
 
   unstage = reset HEAD --
   un = unstage
@@ -29,10 +29,10 @@
   untrack = rm --cache --
   ut = untrack
 
-  update = !git pull --rebase upstream master
+  update = pull --rebase upstream master
   up = update
 
-  meld = !git mergetool --tool meld
+  meld = mergetool --tool meld
 
 [url "git@github.com:"]
   insteadOf = gh:
