@@ -20,6 +20,7 @@
 
   review = "!git log @{push}.."
   rv = review
+  rvdf = "!git diff @{push}.."
 
   unstage = reset HEAD --
   un = unstage
