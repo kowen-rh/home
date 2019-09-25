@@ -1,4 +1,4 @@
 install:
-	xstow -ignore '.git Makefile' -target ~ .
+	stow --ignore '.git|Makefile' --target ~ .
 
 .PHONY: install
