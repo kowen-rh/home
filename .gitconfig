@@ -1,14 +1,8 @@
-[user]
-  email = kowen@redhat.com
-  name = Kevin Owen
 [core]
   editor = ${VISUAL} +'set cc=72'
   excludesfile = ~/.gitignore.global
   autocrlf = input
   whitespace = -trailing-space
-
-[url "git@github.com:"]
-  insteadOf = gh:
 
 [diff]
   tool = meld

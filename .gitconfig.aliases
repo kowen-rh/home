@@ -32,3 +32,6 @@
   up = update
 
   meld = !git mergetool --tool meld
+
+[url "git@github.com:"]
+  insteadOf = gh:
