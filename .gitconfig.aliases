@@ -24,7 +24,6 @@
 
   unstage = reset HEAD --
   un = unstage
-  uncommit = reset --soft HEAD~1
   uc = uncommit
   untrack = rm --cache --
   ut = untrack
