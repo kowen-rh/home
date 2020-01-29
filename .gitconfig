@@ -19,3 +19,6 @@
 [include]
   path = ~/.gitconfig.aliases
   path = ~/.gitconfig.local
+
+[grep]
+	extendedRegexp = true
