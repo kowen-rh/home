@@ -1,7 +1,0 @@
-#!/bin/sh
-
-case "$1" in
-  on)  exec xinput --enable 14 ;;
-  off) exec xinput --disable 14 ;;
-  *)   echo 'usage: touchpad on|off' 1>&2 && exit 1 ;;
-esac

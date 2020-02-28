@@ -1,3 +1,0 @@
-#!/bin/sh
-
-MANPAGER=zathura man -T pdf "$@"

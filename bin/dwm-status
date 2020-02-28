@@ -1,7 +1,0 @@
-#!/bin/sh
-
-time="$(date +"%F << %R")"
-battery="$(acpi | awk '/^Battery 0:/ { print $4 }' | sed s/,//) <<"
-[ "$(vpn status)" = 'up' ] && vpn_status='VPN <<'
-
-echo "$vpn_status $battery $time"
