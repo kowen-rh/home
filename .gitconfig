@@ -21,4 +21,4 @@
   path = ~/.gitconfig.local
 
 [grep]
-	extendedRegexp = true
+  extendedRegexp = true
