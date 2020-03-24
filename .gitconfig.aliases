@@ -28,6 +28,8 @@
   untrack = rm --cache --
   ut = untrack
 
+  who = blame
+
   update = pull --rebase upstream master
   up = update
 

@@ -1,0 +1,3 @@
+#!/bin/sh
+
+git -c core.pager='less -SRF' log --color --date-order --graph --oneline --decorate --simplify-by-decoration --all
