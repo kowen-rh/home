@@ -3,6 +3,7 @@
   excludesfile = ~/.gitignore.global
   autocrlf = input
   whitespace = -trailing-space
+  pager = less -S
 
 [diff]
   tool = meld
