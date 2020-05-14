@@ -1,3 +1,6 @@
 #!/bin/sh
 
+# Removes the last <n> commits from HEAD. Given no arguments, removes the
+# most recent commit.
+
 git reset --soft HEAD~${1:-1}

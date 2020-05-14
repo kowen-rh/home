@@ -1,3 +1,8 @@
 #!/bin/sh
 
-git -c core.pager='less -SRF' log --graph --oneline $(git rev-list --walk-reflogs --all)
+# Displays a graph of the current state of the repository and all branches.
+# Includes commit information on a single line without line wrapping.
+#
+# Based on an alias shared by Robert Krátký.
+
+git -c core.pager='less -S' log --graph --pretty='%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
