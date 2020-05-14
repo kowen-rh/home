@@ -1,0 +1,10 @@
+#!/bin/sh
+
+# List the latest commit for each file in the repository including the date
+# of the change, short hash, and committer name.
+#
+# Based on an alias shared by Robert Krátký.
+
+git ls-tree -r --name-only HEAD | while read filename ; do
+  echo "$(git log -1 --format='%ai %Cred%h %Cgreen%an%Creset' --color=always -- "$filename") $filename"
+done
