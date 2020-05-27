@@ -32,3 +32,7 @@ path[1,0]=~/bin
 if [[ -z $DISPLAY && -n "$(pidof X)" && $TERM == 'screen' ]] ; then
   export DISPLAY=:0
 fi
+
+if [[ -z $DISPLAY && "$(tty)" == '/dev/tty1' ]] ; then
+  startx
+fi
