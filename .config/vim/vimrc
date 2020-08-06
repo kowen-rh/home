@@ -1,8 +1,12 @@
+" Environment
+set directory=$XDG_CACHE_HOME/vim,~/,/tmp
+set backupdir=$XDG_CACHE_HOME/vim,~/,/tmp
+set viminfo+=n$XDG_CACHE_HOME/vim/viminfo
+set runtimepath=$XDG_CONFIG_HOME/vim,$XDG_CONFIG_HOME/vim/after,$VIM,$VIMRUNTIME
+let $MYVIMRC="$XDG_CONFIG_HOME/vim/vimrc"
+
 syntax on
 filetype plugin indent on
-
-set list
-set listchars=eol:¬,tab:▸\
 
 set autoindent
 set backspace=indent,eol,start
@@ -25,11 +29,6 @@ set wildmenu
 
 set display+=lastline
 set encoding=utf-8
-
-" mkdir -p ~/.vim/{backup,swap,undo}
-set backupdir=~/.vim/backup//
-set directory=~/.vim/swap//
-set undodir=~/.vim/undo//
 
 nnoremap K i<CR><Esc>
 
