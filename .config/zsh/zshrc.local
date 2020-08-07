@@ -1,4 +1,0 @@
-setopt autonamedirs
-
-crc=~/src/github.com/kowen-rh/crc
-devtools=~/src/gitlab.cee.redhat.com/kowen/red-hat-devtools
