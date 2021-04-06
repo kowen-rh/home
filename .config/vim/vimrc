@@ -30,6 +30,8 @@ set wildmenu
 set display+=lastline
 set encoding=utf-8
 
-nnoremap K i<CR><Esc>
+let mapleader = "'"
+nmap <leader>l :set list!<CR>
+set listchars=tab:▸\ ,eol:¬
 
 autocmd FileType make set noexpandtab

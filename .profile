@@ -35,6 +35,10 @@ export EDITOR VISUAL
 # specification.
 export VIMINIT='let $MYVIMRC="$XDG_CONFIG_HOME/vim/vimrc" | source $MYVIMRC'
 
+# Redefine where the configuration file for `readline` resides, conforming to
+# the XDG Base Directory specification.
+export INPUTRC="$XDG_CONFIG_HOME/readline/inputrc"
+
 # Set the default terminal emulator, screen locker, and web browser for X. Note
 # that this section only runs if X is running, which we test with the `xprop`
 # command targeting the root window.
@@ -80,6 +84,9 @@ __prepend_path__() {
 	__prepend_path__ "$GOPATH/bin"
 }
 
+# Add the directory for cargo binaries to our `$PATH` if it exists.
+[ -d "$HOME/.cargo/bin" ] && __prepend_path__ "$HOME/.cargo/bin"
+
 # Add the manyshift binary shims to our `$PATH` if the directory for them
 # exists.
 [ -d "$HOME/.manyshift/bin" ] && __prepend_path__ "$HOME/.manyshift/bin"
@@ -93,5 +100,9 @@ __prepend_path__() {
 
 # Add the ~/bin directory to $PATH if it exists.
 [ -d "$HOME/bin" ] && __prepend_path__ "$HOME/bin"
+
+# Load local profile settings if they exist.
+[ -r "$XDG_CONFIG_HOME/sh/profile.local" ] && \
+  . "$XDG_CONFIG_HOME/sh/profile.local"
 
 unset __prepend_path__

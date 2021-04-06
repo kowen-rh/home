@@ -40,3 +40,8 @@ __load_config__() {
 # Load the standard configuration files and localized settings.
 __load_config__ "sh/aliases.d" "sh/functions.d"
 [ -r "$XDG_CONFIG_HOME/bash/bashrc.local" ] && . "$XDG_CONFIG_HOME/bash/bashrc.local"
+
+CCFILE=${HOME}/.runccutil.sh;[ -f $CCFILE ] && source $CCFILE
+
+alias ccutil="bccutil compile --lang en-US"
+alias ccutil-pdf="bccutil compile --lang en-US --format pdf"
