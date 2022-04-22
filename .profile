@@ -98,9 +98,6 @@ __prepend_path__() {
 	eval "$(rbenv init -)"
 }
 
-# Add the ~/bin directory to $PATH if it exists.
-[ -d "$HOME/bin" ] && __prepend_path__ "$HOME/bin"
-
 # Load local profile settings if they exist.
 [ -r "$XDG_CONFIG_HOME/sh/profile.local" ] && \
   . "$XDG_CONFIG_HOME/sh/profile.local"
