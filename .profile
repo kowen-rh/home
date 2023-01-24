@@ -102,4 +102,7 @@ __prepend_path__() {
 [ -r "$XDG_CONFIG_HOME/sh/profile.local" ] && \
   . "$XDG_CONFIG_HOME/sh/profile.local"
 
+# Add the `~/bin` directory to `$PATH` if it exists.
+[ -d "$HOME/bin" ] && __prepend_path__ "$HOME/bin"
+
 unset __prepend_path__
