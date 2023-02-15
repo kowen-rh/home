@@ -39,15 +39,11 @@ export VIMINIT='let $MYVIMRC="$XDG_CONFIG_HOME/vim/vimrc" | source $MYVIMRC'
 # the XDG Base Directory specification.
 export INPUTRC="$XDG_CONFIG_HOME/readline/inputrc"
 
-# Set the default terminal emulator, screen locker, and web browser for X. Note
-# that this section only runs if X is running, which we test with the `xprop`
-# command targeting the root window.
-xprop -root >/dev/null 2>&1 && {
-	XTERMINAL='st'
-	XLOCKER='slock'
-	XBROWSER='firefox'
-	export XTERMINAL XLOCKER XBROWSER
-}
+# Set the default terminal emulator, screen locker, and web browser for X.
+XTERMINAL='st'
+XLOCKER='slock'
+XBROWSER='firefox'
+export XTERMINAL XLOCKER XBROWSER
 
 # Ensure we have access to the $DISPLAY environment variable within a terminal
 # multiplexer. This allows us to open graphical applications.
