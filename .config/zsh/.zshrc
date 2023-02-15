@@ -8,6 +8,9 @@
 # Enable extended globbing.
 setopt extended_glob
 
+# Enable parameter expansion, arithmetic, and shell substitution in prompts.
+setopt prompt_subst
+
 # History settings. Ignore duplicates, append to history file.
 setopt append_history hist_ignore_dups hist_ignore_all_dups
 HISTFILE="$XDG_DATA_HOME/zsh/history"
@@ -26,7 +29,7 @@ unsetopt nomatch
 # -----------------------------------------------------------------------------
 # Prepends `sudo` to the currently active buffer.
 # =============================================================================
-function __prepend_sudo__(){
+function __prepend_sudo__() {
 	[[ "$BUFFER" != 'sudo '* ]] && BUFFER="sudo $BUFFER" && CURSOR+=5
 }
 
@@ -39,28 +42,34 @@ if [[ "$TERM" != 'linux' ]] ; then
   typeset -ga precmd_functions
   typeset -ga preexec_functions
 
-  function precmd {
+  function precmd() {
     print -Pn "\e]0;%(1j,%j job%(2j|s|); ,)%~\a"
   }
 
-  function preexec {
+  function preexec() {
     printf "\033]0;%s\a" "$1"
   }
 fi
 
 # Set the prompt.
 autoload -U colors && colors
+autoload -Uz vcs_info
 
-PS1="
-%{$fg[blue]%}%n%f@%{$fg[magenta]%}%m: %{$fg[yellow]%}%~
-%{$fg[green]%}%# %{$reset_color%}"
+typeset -a precmd_functions
+precmd_functions+=(vcs_info)
+
+zstyle ':vcs_info:*' formats ' %F{green}%b%f'
+
+PS1='
+%F{blue}%n%F{green}@%F{magenta}%m${vcs_info_msg_0_}%F{green}: %F{yellow}%~
+%F{green}%# %f'
 
 # =============================================================================
 # Function: __load_config__(*dirs)
 # -----------------------------------------------------------------------------
 # Sources all of the .sh files in the given directories.
 # =============================================================================
-__load_config__() {
+function __load_config__() {
   for dir in "$@" ; do
     dir="$XDG_CONFIG_HOME/$dir"
     if [ -d "$dir/" ] ; then
