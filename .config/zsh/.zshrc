@@ -80,6 +80,9 @@ function __load_config__() {
   done
 }
 
+# Initialize `rbenv if it exists.
+[ -x "(command -v rbenv)" ] && eval "$(rbenv init - zsh)"
+
 # Load standard aliases and functions.
 __load_config__ 'sh/aliases.d' 'sh/functions.d'
 

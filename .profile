@@ -75,7 +75,7 @@ __prepend_path__() {
 # Set up the environment for Go development if we have the Go compiler
 # installed.
 [ -x "$(command -v go)" ] && {
-	export GOPATH="$HOME/src/go"
+	export GOPATH="$HOME/doc/src/go"
 	[ ! -d "$GOPATH/bin" ] && mkdir -p "$GOPATH/bin"
 	__prepend_path__ "$GOPATH/bin"
 }
@@ -83,20 +83,12 @@ __prepend_path__() {
 # Add the directory for cargo binaries to our `$PATH` if it exists.
 [ -d "$HOME/.cargo/bin" ] && __prepend_path__ "$HOME/.cargo/bin"
 
-# Add the manyshift binary shims to our `$PATH` if the directory for them
-# exists.
-[ -d "$HOME/.manyshift/bin" ] && __prepend_path__ "$HOME/.manyshift/bin"
-
-# If the `~/.rbenv` directory exists, we have `rbenv` installed. Add the binary
-# directory to our `$PATH` and initialize `rbenv`.
-[ -d "$HOME/.rbenv" ] && {
-	__prepend_path__ "$HOME/.rbenv/bin"
-	eval "$(rbenv init -)"
-}
-
 # Load local profile settings if they exist.
 [ -r "$XDG_CONFIG_HOME/sh/profile.local" ] && \
   . "$XDG_CONFIG_HOME/sh/profile.local"
+
+# Add the `~/.local/bin` directory to the `$PATH` if it exists.
+[ -d "$HOME/.local/bin" ] && __prepend_path__ "$HOME/.local/bin"
 
 # Add the `~/bin` directory to `$PATH` if it exists.
 [ -d "$HOME/bin" ] && __prepend_path__ "$HOME/bin"
