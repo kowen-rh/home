@@ -1,3 +1,0 @@
-#!/bin/sh
-
-xclip -sel clip -o | xclip -sel primary -i

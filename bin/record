@@ -1,9 +1,0 @@
-#!/bin/sh
-
-resolution="$(wattr wh `lsw -r` | tr \  x)"
-
-mkdir -p $HOME/vid/x11
-
-exec ffmpeg -s "$resolution" -r 60 -f x11grab -i :0.0 -vcodec libx264 \
-  -pix_fmt yuv420p -preset veryfast -tune zerolatency -vsync 0 -y \
-  -loglevel 0 "$HOME/vid/x11/$1.mp4"
