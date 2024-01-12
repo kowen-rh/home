@@ -1,7 +1,0 @@
-# vim
-.vim/.netrwhist
-
-# zsh
-.cache/zsh/zcompdump-*
-.config/zsh/zshrc.local
-.local/share/zsh/history
