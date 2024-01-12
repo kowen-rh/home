@@ -1,4 +1,4 @@
 install:
-	stow --ignore '.git/|.gitignore|Makefile' --target ~ .
+	stow --no-folding --ignore '.git/|.gitignore|Makefile' --target ~ .
 
 .PHONY: install
