@@ -61,7 +61,7 @@ precmd_functions+=(vcs_info)
 zstyle ':vcs_info:*' formats ' %F{green}%b%f'
 
 PS1='
-%F{blue}%n%F{green}@%F{magenta}%m${vcs_info_msg_0_}%F{green}: %F{yellow}%~
+%F{blue}%n${vcs_info_msg_0_}%F{green}: %F{yellow}%~
 %F{green}%# %f'
 
 # =============================================================================
@@ -81,7 +81,7 @@ function __load_config__() {
 }
 
 # Initialize `rbenv if it exists.
-[ -x "(command -v rbenv)" ] && eval "$(rbenv init - zsh)"
+[ -x "$(command -v rbenv)" ] && eval "$(rbenv init - zsh)"
 
 # Load standard aliases and functions.
 __load_config__ 'sh/aliases.d' 'sh/functions.d'
